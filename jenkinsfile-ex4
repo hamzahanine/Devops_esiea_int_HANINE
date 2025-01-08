@@ -1,0 +1,44 @@
+pipeline {
+agent any
+parameters {
+string(name: 'NAME', description: 'Please tell me your name?')
+string(name: 'DESCRI', description: 'Describe about the job details')
+booleanParam(name: ‘SKIP_TEST’, description: ‘Want to skip running Test cases?’)
+choice(name: 'Branch', choices: ['Dev', 'Main', 'You'], description: 'Choose the Branch')
+password(name: 'Morroco_is_the_best', description: 'Enter SONAR password')
+}
+stages {
+    stage('Printing name') {
+        steps {
+            script {
+                def name = "${params.NAME}"
+                def descri = "${params.DESCRI}"
+                def password = "Morroco_is_the_best"
+
+                if (params.Morroco_is_the_best!= password){
+                    error("the password is incorrect.")
+                    }
+                echo "Mr. $name"
+                echo "Youre description. $descri"
+                
+            }
+        }
+    }
+   
+    stage('BUILD') {
+            steps {
+                echo 'Developpement'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing'
+            }
+        }
+        stage('DEPLOY') {
+            steps {
+                echo 'Mise en Production'
+            }
+        }
+    }
+}
