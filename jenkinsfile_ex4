@@ -5,7 +5,7 @@
     string(name: 'DESCRI', description: 'Describe about the job details')
     booleanParam(name: 'SKIP_TEST', description: 'Want to skip running Test cases?')
     choice(name: 'Branch', choices: ['Dev', 'Main', 'You'], description: 'Choose the Branch')
-    password(name: 'Morroco_is_the_best', description: 'Enter SONAR password')
+    password(name: 'root', description: 'Enter SONAR password')
     }
     stages {
         stage('Printing name') {
@@ -13,9 +13,9 @@
                 script {
                     def name = "${params.NAME}"
                     def descri = "${params.DESCRI}"
-                    def password = "Morroco_is_the_best"
+                    def password = "root"
 
-                    if (params.Morroco_is_the_best!= password){
+                    if (params.root != password){
                         error("the password is incorrect.")
                         }
                     echo "Mr. $name"
