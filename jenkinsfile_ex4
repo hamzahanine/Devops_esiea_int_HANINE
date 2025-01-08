@@ -13,11 +13,7 @@
                 script {
                     def name = "${params.NAME}"
                     def descri = "${params.DESCRI}"
-                    def password = "root"
-
-                    if (params.root != password){
-                        error("the password is incorrect.")
-                        }
+                    
                     echo "Mr. $name"
                     echo "Youre description. $descri"
                     
